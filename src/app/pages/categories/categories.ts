@@ -1,23 +1,16 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { CategoryComponent } from '../../components/category/category';
-import { PillComponent } from '../../components/pill/pill';
-import { ICategory } from '../../models/categories';
+import { CategoryLogic } from '../../services/logic/category-logic/category-logic';
 
 @Component({
   selector: 'cvw-categories',
-  imports: [PillComponent, CategoryComponent],
+  imports: [CategoryComponent, CommonModule],
   templateUrl: './categories.html',
 })
 export class Categories {
-  public category: ICategory = {
-    id: 47,
-    group: {
-      id: 5,
-      name: 'Impôts & Rémunérations',
-      color: 'm-red',
-    },
-    wording: 'Cotisations sociales facultatives et complémentaires',
-    description:
-      'Mutuelle complémentaire, cotisations retraites complémentaires, loi Madelin et autres cotisations retraite ou maladie facultatives.',
-  };
+  private categoryLogic = inject(CategoryLogic);
+
+  public categories = toSignal(this.categoryLogic.geVisibleList());
 }
