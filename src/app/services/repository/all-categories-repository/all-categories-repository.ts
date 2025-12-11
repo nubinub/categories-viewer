@@ -6,12 +6,12 @@ import { ICategory } from '../../../models/categories';
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryRepository {
+export class AllCategoriesRepository {
   private httpClient = inject(HttpClient);
 
   private static readonly path = 'all-categories';
 
   public get(): Observable<ICategory[]> {
-    return this.httpClient.get<ICategory[]>(CategoryRepository.path);
+    return this.httpClient.get<ICategory[]>(AllCategoriesRepository.path);
   }
 }
