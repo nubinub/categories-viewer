@@ -6,3 +6,21 @@
   letter-spacing: 0px;
   vertical-align: middle;
 }
+
+@mixin paragraph-small {
+  font-family: Open sans;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  vertical-align: middle;
+}
+
+@mixin h6-semi-bold-14px {
+  font-family: Eina03-SemiBold;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 120%;
+  vertical-align: middle;
+}

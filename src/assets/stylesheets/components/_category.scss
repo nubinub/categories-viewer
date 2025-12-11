@@ -1,0 +1,35 @@
+@use '../base//typography';
+
+.cvw-category {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-separator);
+  padding: 16px;
+  width: 597px;
+
+  &:hover {
+    background-color: #f3f5f8;
+  }
+
+  &.cvw-category--selected {
+    background-color: var(--color-light-blue);
+    border-color: var(--color-cerulean);
+  }
+}
+
+.cvw-category__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cvw-category__wording {
+  @include typography.h6-semi-bold-14px();
+
+  color: var(--color-brand-diantre);
+}
+
+.cvw-category__description {
+  @include typography.paragraph-small();
+
+  color: var(--color-grey-barth);
+}

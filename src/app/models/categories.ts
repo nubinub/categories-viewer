@@ -1,4 +1,4 @@
-export interface Category {
+export interface ICategory {
   id: number;
   group?: {
     id: number;
@@ -9,7 +9,7 @@ export interface Category {
   description: string;
 }
 
-export interface VisibleCategory {
+export interface IVisibleCategory {
   id: number;
 }
 
