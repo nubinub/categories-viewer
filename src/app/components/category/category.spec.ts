@@ -52,7 +52,7 @@ describe('CategoryComponent', () => {
 
       await fixture.detectChanges();
 
-      expect(fixture.nativeElement.querySelector('.cvw-category--selected')).not.toBeNull();
+      expect(fixture.nativeElement.classList).toContain('cvw-category--selected');
     });
 
     it('should mark category as not selected when given false', async () => {
@@ -60,7 +60,7 @@ describe('CategoryComponent', () => {
 
       await fixture.detectChanges();
 
-      expect(fixture.nativeElement.querySelector('.cvw-category--selected')).toBeNull();
+      expect(fixture.nativeElement.classList).not.toContain('cvw-category--selected');
     });
   });
 });

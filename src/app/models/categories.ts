@@ -6,7 +6,7 @@ export interface ICategory {
     color?: GroupColor;
   };
   wording: string;
-  description: string;
+  description?: string;
 }
 
 export interface IVisibleCategory {

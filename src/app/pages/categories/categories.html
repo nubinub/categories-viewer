@@ -1,5 +1,6 @@
 <cvw-card>
-  @for (category of categories(); track category.id) {
-    <cvw-category [category]="category"></cvw-category>
-  }
+  <form class="cvw-search">
+    <input class="cvw-field" [field]="searchForm.query" placeholder="Rechercher une catégorie" />
+  </form>
+  <cvw-category-list [categories]="filteredCategories()"></cvw-category-list>
 </cvw-card>

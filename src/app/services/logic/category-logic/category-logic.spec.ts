@@ -72,4 +72,141 @@ describe('CategoryLogic', () => {
       expect(mockFn).toHaveBeenCalledWith([]);
     });
   });
+
+  describe('#filter', () => {
+    it('should return category when wording matches query', () => {
+      const results = service.filter(
+        [
+          {
+            id: 1,
+            description: 'Test One',
+            wording: 'T1',
+          },
+          {
+            id: 2,
+            description: 'Test Two',
+            wording: 'T2',
+          },
+        ],
+        { query: 'T1' },
+      );
+
+      expect(results).toEqual([
+        {
+          id: 1,
+          description: 'Test One',
+          wording: 'T1',
+        },
+      ]);
+    });
+
+    it('should return category when description matches query', () => {
+      const results = service.filter(
+        [
+          {
+            id: 1,
+            description: 'Test One',
+            wording: 'T1',
+          },
+          {
+            id: 2,
+            description: 'Test Two',
+            wording: 'T2',
+          },
+        ],
+        { query: 'Test One' },
+      );
+
+      expect(results).toEqual([
+        {
+          id: 1,
+          description: 'Test One',
+          wording: 'T1',
+        },
+      ]);
+    });
+
+    it('should return category when query is substring of description', () => {
+      const results = service.filter(
+        [
+          {
+            id: 1,
+            description: 'Test One',
+            wording: 'T1',
+          },
+          {
+            id: 2,
+            description: 'Test Two',
+            wording: 'T2',
+          },
+        ],
+        { query: 'ne' },
+      );
+
+      expect(results).toEqual([
+        {
+          id: 1,
+          description: 'Test One',
+          wording: 'T1',
+        },
+      ]);
+    });
+
+    it('should return category when query is substring of wording', () => {
+      const results = service.filter(
+        [
+          {
+            id: 1,
+            description: 'Test One',
+            wording: 'T1',
+          },
+          {
+            id: 2,
+            description: 'Test Two',
+            wording: 'T2',
+          },
+        ],
+        { query: '1' },
+      );
+
+      expect(results).toEqual([
+        {
+          id: 1,
+          description: 'Test One',
+          wording: 'T1',
+        },
+      ]);
+    });
+
+    it('should return category when query is substring of description no matter the case', () => {
+      const results = service.filter(
+        [
+          {
+            id: 1,
+            description: 'Test One',
+            wording: 'T1',
+          },
+          {
+            id: 2,
+            description: 'TeSt Two',
+            wording: 'T2',
+          },
+        ],
+        { query: 'test' },
+      );
+
+      expect(results).toEqual([
+        {
+          id: 1,
+          description: 'Test One',
+          wording: 'T1',
+        },
+        {
+          id: 2,
+          description: 'TeSt Two',
+          wording: 'T2',
+        },
+      ]);
+    });
+  });
 });
