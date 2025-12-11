@@ -1,0 +1,26 @@
+@use '../base/typography';
+
+.cvw-pill {
+  @include typography.paragraph-tiny();
+
+  align-items: center;
+  border-radius: 16px;
+  display: inline-flex;
+  height: 20px;
+  padding: 8px 12px;
+}
+
+.cvw-pill--m-yellow {
+  background-color: var(--color-yellow-light);
+  color: var(--color-yellow);
+}
+
+.cvw-pill--m-red {
+  background-color: var(--color-red-bg);
+  color: var(--color-bittersweet);
+}
+
+.cvw-pill--m-blue {
+  background-color: var(--color-light-blue);
+  color: var(--color-cerulean);
+}
