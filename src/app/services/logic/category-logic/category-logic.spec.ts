@@ -35,7 +35,7 @@ describe('CategoryLogic', () => {
             description: 'Test Two',
             wording: 'T2',
           },
-        ]),
+        ])
       );
       vi.spyOn(visibleCategoriesRepository, 'get').mockReturnValue(of([{ id: 2 }]));
 
@@ -63,7 +63,7 @@ describe('CategoryLogic', () => {
             description: 'Test Two',
             wording: 'T2',
           },
-        ]),
+        ])
       );
       vi.spyOn(visibleCategoriesRepository, 'get').mockReturnValue(of([]));
 
@@ -88,7 +88,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'T1' },
+        { query: 'T1', group: '' }
       );
 
       expect(results).toEqual([
@@ -114,7 +114,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'Test One' },
+        { query: 'Test One', group: '' }
       );
 
       expect(results).toEqual([
@@ -140,7 +140,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'ne' },
+        { query: 'ne', group: '' }
       );
 
       expect(results).toEqual([
@@ -166,7 +166,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: '1' },
+        { query: '1', group: '' }
       );
 
       expect(results).toEqual([
@@ -192,7 +192,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'test' },
+        { query: 'test', group: '' }
       );
 
       expect(results).toEqual([
@@ -207,6 +207,26 @@ describe('CategoryLogic', () => {
           wording: 'T2',
         },
       ]);
+    });
+
+    it('should return no category when group is given and no category has group', () => {
+      const results = service.filter(
+        [
+          {
+            id: 1,
+            description: 'Test One',
+            wording: 'T1',
+          },
+          {
+            id: 2,
+            description: 'TeSt Two',
+            wording: 'T2',
+          },
+        ],
+        { query: '', group: '1' }
+      );
+
+      expect(results).toEqual([]);
     });
   });
 });

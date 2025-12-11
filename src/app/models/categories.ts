@@ -1,12 +1,14 @@
 export interface ICategory {
   id: number;
-  group?: {
-    id: number;
-    name: string;
-    color?: GroupColor;
-  };
+  group?: IGroup;
   wording: string;
   description?: string;
+}
+
+export interface IGroup {
+  id: number;
+  name: string;
+  color?: GroupColor;
 }
 
 export interface IVisibleCategory {

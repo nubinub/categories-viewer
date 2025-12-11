@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
+import { uniqBy } from 'lodash-es';
 import { combineLatest, map, Observable } from 'rxjs';
-import { ICategory } from '../../../models/categories';
+import { ICategory, IGroup } from '../../../models/categories';
 import { ISearchData } from '../../../models/search';
 import { AllCategoriesRepository } from '../../repository/all-categories-repository/all-categories-repository';
 import { VisibleCategoriesRepository } from '../../repository/visible-categories/visible-categories';
@@ -18,19 +19,37 @@ export class CategoryLogic {
       this.visibleCategoriesRepository.get(),
     ]).pipe(
       map(([categories, visibles]) =>
-        categories.filter((category) => visibles.some(({ id }) => category.id === id)),
-      ),
+        categories.filter((category) => visibles.some(({ id }) => category.id === id))
+      )
     );
   }
 
+  /**
+   * Filter the categories according to search data.
+   * @param categories
+   * @param search
+   * @returns
+   */
   public filter(categories: ICategory[] | undefined, search: ISearchData): ICategory[] {
     const needle = search.query?.toLowerCase();
     return (
       categories?.filter(
         (category) =>
-          category.wording?.toLowerCase().includes(needle) ||
-          category.description?.toLowerCase().includes(needle),
+          (!search.group || category.group?.id === +search.group) &&
+          (!needle ||
+            category.wording?.toLowerCase().includes(needle) ||
+            category.description?.toLowerCase().includes(needle))
       ) ?? []
     );
+  }
+
+  /**
+   * Returns all the unique groups from given categories, sorted alphabetically according to name.
+   * @param categories
+   * @returns
+   */
+  public getGroups(categories?: ICategory[]): IGroup[] {
+    const groups = categories?.map((category) => category.group).filter((group) => !!group) ?? [];
+    return uniqBy(groups, (group) => group.id).sort((a, b) => a.name.localeCompare(b.name));
   }
 }

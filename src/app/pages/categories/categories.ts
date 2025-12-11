@@ -17,12 +17,17 @@ export class Categories {
 
   private searchModel = signal<ISearchData>({
     query: '',
+    group: '',
   });
 
   private categories = toSignal(this.categoryLogic.geVisibleList());
 
   public filteredCategories = computed(() =>
     this.categoryLogic.filter(this.categories(), this.searchModel()),
+  );
+
+  public groups = computed(() =>
+    this.categoryLogic.getGroups(this.categories()),
   );
 
   public searchForm = form(this.searchModel);

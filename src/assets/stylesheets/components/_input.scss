@@ -1,11 +1,16 @@
 @use '../base/typography';
 
-.cvw-field {
+.cvw-field,
+.cvw-dropdown {
   @include typography.paragraph-tiny();
 
   background-color: var(--color-white);
   border: 1px solid var(--color-separator);
   border-radius: 4px;
-  flex: 1;
+  color: var(--color-brand-diantre);
   padding: 9.5px 9px;
+}
+
+.cvw-field {
+  flex: 1;
 }
