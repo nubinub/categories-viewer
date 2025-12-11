@@ -1,4 +1,8 @@
 <div class="cvw-category" [class.cvw-category--selected]="selected()">
+  @let group = category().group;
+  @if (group) {
+    <cvw-pill [label]="group.name" [color]="group.color"></cvw-pill>
+  }
   <div class="cvw-category__info">
     <h6 class="cvw-category__wording">{{ category().wording }}</h6>
     <p class="cvw-category__description">{{ category().description }}</p>

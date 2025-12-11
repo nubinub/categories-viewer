@@ -6,8 +6,11 @@
   align-items: center;
   border-radius: 16px;
   display: inline-flex;
-  height: 20px;
   padding: 8px 12px;
+
+  // TODO: Temporary colors, awaiting for design
+  background-color: var(--color-grey-barth);
+  color: var(--color-white);
 }
 
 .cvw-pill--m-yellow {
