@@ -22,13 +22,13 @@ export class Categories {
 
   private categories = toSignal(this.categoryLogic.geVisibleList());
 
+  private sortedCategories = computed(() => this.categoryLogic.sort(this.categories()));
+
   public filteredCategories = computed(() =>
-    this.categoryLogic.filter(this.categories(), this.searchModel()),
+    this.categoryLogic.filter(this.sortedCategories(), this.searchModel())
   );
 
-  public groups = computed(() =>
-    this.categoryLogic.getGroups(this.categories()),
-  );
+  public groups = computed(() => this.categoryLogic.getGroups(this.categories()));
 
   public searchForm = form(this.searchModel);
 }

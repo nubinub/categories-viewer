@@ -229,4 +229,50 @@ describe('CategoryLogic', () => {
       expect(results).toEqual([]);
     });
   });
+
+  describe('#sort', () => {
+    it('should return an empty array when given undefined', () => {
+      const result = service.sort(undefined);
+
+      expect(result).toEqual([]);
+    });
+
+    it('should return an array sorted alphabetically according to category wording', () => {
+      const results = service.sort([
+        {
+          id: 1,
+          description: 'Test Three',
+          wording: 'C',
+        },
+        {
+          id: 2,
+          description: 'Test Two',
+          wording: 'B',
+        },
+        {
+          id: 3,
+          description: 'Test One',
+          wording: 'A',
+        },
+      ]);
+
+      expect(results).toEqual([
+        {
+          id: 3,
+          description: 'Test One',
+          wording: 'A',
+        },
+        {
+          id: 2,
+          description: 'Test Two',
+          wording: 'B',
+        },
+        {
+          id: 1,
+          description: 'Test Three',
+          wording: 'C',
+        },
+      ]);
+    });
+  });
 });

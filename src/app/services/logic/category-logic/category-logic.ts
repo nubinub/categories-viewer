@@ -52,4 +52,13 @@ export class CategoryLogic {
     const groups = categories?.map((category) => category.group).filter((group) => !!group) ?? [];
     return uniqBy(groups, (group) => group.id).sort((a, b) => a.name.localeCompare(b.name));
   }
+
+  /**
+   * Sort the category according to alphabetical order on category wording
+   * @param categories Categories list
+   * @returns
+   */
+  public sort(categories?: ICategory[]): ICategory[] {
+    return categories ? [...categories].sort((a, b) => a.wording.localeCompare(b.wording)) : [];
+  }
 }
