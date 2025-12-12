@@ -1,0 +1,12 @@
+<cvw-card>
+  <form class="cvw-search">
+    <input class="cvw-field" [field]="searchForm.query" placeholder="Rechercher une catégorie" />
+    <select class="cvw-dropdown" [field]="searchForm.group">
+      <option value="">Toutes les catégories</option>
+      @for (group of groups(); track group.id) {
+      <option [value]="group.id">{{ group.name }}</option>
+      }
+    </select>
+  </form>
+  <cvw-category-list [categories]="filteredCategories()"></cvw-category-list>
+</cvw-card>

@@ -1,0 +1,44 @@
+@use '../base/typography';
+
+.cvw-pill {
+  @include typography.paragraph-tiny();
+
+  align-items: center;
+  border-radius: 16px;
+  display: inline-flex;
+  padding: 8px 12px;
+
+  // TODO: Temporary colors, awaiting for design
+  background-color: var(--color-grey-barth);
+  color: var(--color-white);
+}
+
+.cvw-pill--m-yellow {
+  background-color: var(--color-yellow-light);
+  color: var(--color-yellow);
+}
+
+.cvw-pill--m-red {
+  background-color: var(--color-red-bg);
+  color: var(--color-bittersweet);
+}
+
+.cvw-pill--m-blue {
+  background-color: var(--color-light-blue);
+  color: var(--color-cerulean);
+}
+
+.cvw-pill--m-pink {
+  background-color: var(--color-background-pink);
+  color: var(--color-pink);
+}
+
+.cvw-pill--m-green {
+  background-color: var(--color-background-pink);
+  color: var(--color-pink);
+}
+
+.cvw-pill--m-purple {
+  background-color: var(--color-background-purple);
+  color: var(--color-purple);
+}
