@@ -1,5 +1,16 @@
 <cvw-header>
-  <cvw-tab [active]="true" label="Ordre alphabétique" icon="alphabetical"></cvw-tab>
+  <cvw-tab
+    [active]="mode() === 'group'"
+    label="Groupe de catégorie"
+    icon="group"
+    (click)="setMode('group')"
+  ></cvw-tab>
+  <cvw-tab
+    [active]="mode() === 'alphabetical'"
+    label="Ordre alphabétique"
+    icon="alphabetical"
+    (click)="setMode('alphabetical')"
+  ></cvw-tab>
 </cvw-header>
 <cvw-card>
   <form class="cvw-search">
@@ -13,5 +24,7 @@
   </form>
   @if (mode() === 'alphabetical') {
     <cvw-category-list [categories]="filteredCategories()"></cvw-category-list>
+  } @else {
+    <cvw-category-group [categories]="filteredCategories()"></cvw-category-group>
   }
 </cvw-card>

@@ -9,4 +9,6 @@ import { CategoryComponent } from '../category/category';
 })
 export class CategoryListComponent {
   public categories = input<ICategory[]>();
+
+  public showGroup = input(true);
 }

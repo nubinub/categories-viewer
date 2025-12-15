@@ -1,0 +1,6 @@
+@for (categoriesByGroup of categoriesByGroups(); track categoriesByGroup.group.id) {
+  @let group = categoriesByGroup.group;
+  @let categories = categoriesByGroup.categories;
+  <cvw-pill [color]="group.color" [label]="group.name" [rounded]="false"></cvw-pill>
+  <cvw-category-list [categories]="categories" [showGroup]="false"></cvw-category-list>
+}
