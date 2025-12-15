@@ -3,6 +3,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Field, form } from '@angular/forms/signals';
 import { CardComponent } from '../../components/card/card';
+import { CategoryGroupComponent } from '../../components/category-group/category-group';
 import { CategoryListComponent } from '../../components/category-list/category-list';
 import { HeaderComponent } from '../../components/header/header';
 import { TabComponent } from '../../components/tab/tab';
@@ -19,6 +20,7 @@ import { CategoryLogic } from '../../services/logic/category-logic/category-logi
     Field,
     HeaderComponent,
     TabComponent,
+    CategoryGroupComponent,
   ],
   templateUrl: './categories.html',
 })
@@ -37,10 +39,14 @@ export class Categories {
   public mode = signal<'alphabetical' | 'group'>('alphabetical');
 
   public filteredCategories = computed(() =>
-    this.categoryLogic.filter(this.sortedCategories(), this.searchModel())
+    this.categoryLogic.filter(this.sortedCategories(), this.searchModel()),
   );
 
   public groups = computed(() => this.categoryLogic.getGroups(this.categories()));
 
   public searchForm = form(this.searchModel);
+
+  public setMode(mode: 'alphabetical' | 'group') {
+    this.mode.set(mode);
+  }
 }

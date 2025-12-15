@@ -1,1 +1,3 @@
-<div class="cvw-pill" [ngClass]="'cvw-pill--' + color()">{{ label() }}</div>
+<div class="cvw-pill" [ngClass]="'cvw-pill--' + color()" [class.cvw-pill--rounded]="rounded()">
+  {{ label() }}
+</div>

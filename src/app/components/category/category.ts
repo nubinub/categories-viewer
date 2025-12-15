@@ -15,4 +15,6 @@ export class CategoryComponent {
   public category = input.required<ICategory>();
 
   public selected = input(false);
+
+  public showGroup = input(true);
 }

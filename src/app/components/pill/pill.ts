@@ -11,4 +11,6 @@ export class PillComponent {
   public label = input.required<string>();
 
   public color = input<GroupColor>();
+
+  public rounded = input(true);
 }

@@ -4,8 +4,7 @@
   @include typography.paragraph-tiny();
 
   align-items: center;
-  border-radius: 16px;
-  display: inline-flex;
+  display: flex;
   padding: 8px 12px;
 
   // TODO: Temporary colors, awaiting for design
@@ -41,4 +40,9 @@
 .cvw-pill--m-purple {
   background-color: var(--color-background-purple);
   color: var(--color-purple);
+}
+
+.cvw-pill--rounded {
+  display: inline-flex;
+  border-radius: 16px;
 }

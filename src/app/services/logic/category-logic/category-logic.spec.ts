@@ -35,7 +35,7 @@ describe('CategoryLogic', () => {
             description: 'Test Two',
             wording: 'T2',
           },
-        ])
+        ]),
       );
       vi.spyOn(visibleCategoriesRepository, 'get').mockReturnValue(of([{ id: 2 }]));
 
@@ -63,7 +63,7 @@ describe('CategoryLogic', () => {
             description: 'Test Two',
             wording: 'T2',
           },
-        ])
+        ]),
       );
       vi.spyOn(visibleCategoriesRepository, 'get').mockReturnValue(of([]));
 
@@ -88,7 +88,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'T1', group: '' }
+        { query: 'T1', group: '' },
       );
 
       expect(results).toEqual([
@@ -114,7 +114,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'Test One', group: '' }
+        { query: 'Test One', group: '' },
       );
 
       expect(results).toEqual([
@@ -140,7 +140,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'ne', group: '' }
+        { query: 'ne', group: '' },
       );
 
       expect(results).toEqual([
@@ -166,7 +166,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: '1', group: '' }
+        { query: '1', group: '' },
       );
 
       expect(results).toEqual([
@@ -192,7 +192,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: 'test', group: '' }
+        { query: 'test', group: '' },
       );
 
       expect(results).toEqual([
@@ -223,7 +223,7 @@ describe('CategoryLogic', () => {
             wording: 'T2',
           },
         ],
-        { query: '', group: '1' }
+        { query: '', group: '1' },
       );
 
       expect(results).toEqual([]);
@@ -271,6 +271,92 @@ describe('CategoryLogic', () => {
           id: 1,
           description: 'Test Three',
           wording: 'C',
+        },
+      ]);
+    });
+  });
+
+  describe('#groupByGroups', () => {
+    it('should create an empty list when given an empty list', () => {
+      expect(service.groupByGroup([])).toEqual([]);
+    });
+
+    it('should group categories according to their group', () => {
+      expect(
+        service.groupByGroup([
+          {
+            id: 1,
+            wording: 'A',
+            group: {
+              id: 4,
+              name: 'Test',
+              color: 'm-yellow',
+            },
+          },
+          {
+            id: 2,
+            wording: 'B',
+            group: {
+              id: 5,
+              name: 'Another group',
+              color: 'm-pink',
+            },
+          },
+          {
+            id: 3,
+            wording: 'C',
+            group: {
+              id: 4,
+              name: 'Test',
+              color: 'm-yellow',
+            },
+          },
+        ]),
+      ).toEqual([
+        {
+          group: {
+            id: 4,
+            name: 'Test',
+            color: 'm-yellow',
+          },
+          categories: [
+            {
+              id: 1,
+              wording: 'A',
+              group: {
+                id: 4,
+                name: 'Test',
+                color: 'm-yellow',
+              },
+            },
+            {
+              id: 3,
+              wording: 'C',
+              group: {
+                id: 4,
+                name: 'Test',
+                color: 'm-yellow',
+              },
+            },
+          ],
+        },
+        {
+          group: {
+            id: 5,
+            name: 'Another group',
+            color: 'm-pink',
+          },
+          categories: [
+            {
+              id: 2,
+              wording: 'B',
+              group: {
+                id: 5,
+                name: 'Another group',
+                color: 'm-pink',
+              },
+            },
+          ],
         },
       ]);
     });

@@ -1,5 +1,5 @@
 <div class="cvw-category-list">
   @for (category of categories(); track category.id) {
-    <cvw-category [category]="category"></cvw-category>
+    <cvw-category [category]="category" [showGroup]="showGroup()"></cvw-category>
   }
 </div>

@@ -21,7 +21,7 @@ describe('Pill', () => {
     it('should render label', async () => {
       await fixture.detectChanges();
 
-      expect(fixture.nativeElement.querySelector('div.cvw-pill').textContent).toEqual(
+      expect(fixture.nativeElement.querySelector('div.cvw-pill').textContent).toContain(
         'Awesome test',
       );
     });
@@ -34,6 +34,24 @@ describe('Pill', () => {
       await fixture.detectChanges();
 
       expect(fixture.nativeElement.querySelector('.cvw-pill--m-yellow')).not.toBeNull();
+    });
+  });
+
+  describe('@Input: rounded', () => {
+    it('should set class cvw-pill--rounded when true', async () => {
+      fixture.componentRef.setInput('rounded', true);
+
+      await fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.cvw-pill--rounded')).not.toBeNull();
+    });
+
+    it('should not set class cvw-pill--rounded when false', async () => {
+      fixture.componentRef.setInput('rounded', false);
+
+      await fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.cvw-pill--rounded')).toBeNull();
     });
   });
 });

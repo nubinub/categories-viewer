@@ -16,3 +16,8 @@ export interface IVisibleCategory {
 }
 
 export type GroupColor = 'm-red' | 'm-pink' | 'm-yellow' | 'm-purple' | 'm-blue' | 'm-green';
+
+export interface ICategoriesByGroup {
+  group: IGroup;
+  categories: ICategory[];
+}
