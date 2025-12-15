@@ -63,4 +63,22 @@ describe('CategoryComponent', () => {
       expect(fixture.nativeElement.classList).not.toContain('cvw-category--selected');
     });
   });
+
+  describe('@Input: showGroup', () => {
+    it('should display group when given true', async () => {
+      fixture.componentRef.setInput('showGroup', true);
+
+      await fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.cvw-pill')).not.toBeNull();
+    });
+
+    it('should not display group when given false', async () => {
+      fixture.componentRef.setInput('showGroup', false);
+
+      await fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.cvw-pill')).toBeNull();
+    });
+  });
 });

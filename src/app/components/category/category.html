@@ -1,5 +1,5 @@
 @let group = category().group;
-@if (group) {
+@if (group && showGroup()) {
   <cvw-pill [label]="group.name" [color]="group.color"></cvw-pill>
 }
 <div class="cvw-category__info">
