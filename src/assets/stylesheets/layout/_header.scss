@@ -1,0 +1,17 @@
+@use '../base/typography';
+
+nav {
+  align-items: center;
+  background-color: var(--color-white);
+  display: flex;
+  gap: 8px;
+  left: 0px;
+  padding: 17px 122px;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+
+  h4 {
+    @include typography.h4-semi-bold-22px;
+  }
+}
