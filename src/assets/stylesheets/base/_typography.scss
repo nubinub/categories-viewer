@@ -24,3 +24,12 @@
   line-height: 120%;
   vertical-align: middle;
 }
+
+@mixin h4-semi-bold-22px {
+  font-family: Eina03-SemiBold;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 120%;
+  vertical-align: middle;
+}
